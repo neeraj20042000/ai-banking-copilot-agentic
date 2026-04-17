@@ -1,5 +1,6 @@
 from pydantic import BaseModel
-
+from typing import Optional
 class QueryResponse(BaseModel):
-    response: str
-    agent_used: str
+    answer: str
+    status: str = "success"
+    source: Optional[str] = None
