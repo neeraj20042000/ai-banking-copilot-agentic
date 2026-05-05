@@ -1,9 +1,14 @@
+import os
+from dotenv import load_dotenv
 from groq import Groq
-from config.settings import GROQ_API_KEY
 
-client = Groq(api_key=GROQ_API_KEY))
+load_dotenv()
 
-def call_llm(prompt: str, max_tokens: int = 300, temperature: float = 0.3):
+GROQ_API_KEY = os.getenv("GROQ_API_KEY")
+
+client = Groq(api_key=GROQ_API_KEY)
+
+def call_llm(prompt: str, max_tokens: int = 300):
     """
     Generic LLM caller with strict token control
     """
@@ -15,7 +20,7 @@ def call_llm(prompt: str, max_tokens: int = 300, temperature: float = 0.3):
             {"role": "user", "content": prompt}
         ],
         max_tokens=max_tokens,   # LIMIT TOKENS
-        temperature=temperature
+        temperature=0.3
     )
 
     return response.choices[0].message.content

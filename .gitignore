@@ -21,3 +21,7 @@ Thumbs.db
 
 # ChromaDB data (persistent storage)
 chroma_db/
+data/
+
+# Persistent runtime memory
+memory/user_memory.json
